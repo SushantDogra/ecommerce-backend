@@ -1,12 +1,10 @@
 const router = require("express").Router();
+const { verifyTokenAndAuthorization } = require("../middlewares/verifytoken");
+const userService = require("../services/userService");
 
-router.get("/", (req, res) => {
-  res.send("User found");
-});
-
-router.post("/", (req, res) => {
-  const { username } = req.body;
-  res.send(`you posted ${username}`);
+router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
+  const result = await userService.updateUserDetails(req.params.id, req.body);
+  res.json(result);
 });
 
 module.exports = router;
