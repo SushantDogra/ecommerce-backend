@@ -1,10 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-dotenv.config();
 const cors = require("cors");
+
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
+const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart");
+const orderRoutes = require("./routes/order");
+
+dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -24,6 +29,9 @@ app.get("/status", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/carts", cartRoutes);
+app.use("/api/orders", orderRoutes);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running!");
