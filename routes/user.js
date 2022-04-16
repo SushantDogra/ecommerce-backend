@@ -27,7 +27,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 
 router.get("/find/:id", verifyTokenAndAdminAuthorization, async (req, res) => {
   try {
-    const result = await userService.getUser(req.params.id, req.body);
+    const result = await userService.getUser(req.params.id);
     res.json(result);
   } catch (err) {
     console.log(err);
