@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/status", (req, res) => {
-  res.send("OK");
+  res.send("It's Working!!!");
 });
 
 app.use("/api/users", userRoutes);
