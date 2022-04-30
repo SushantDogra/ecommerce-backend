@@ -24,7 +24,7 @@ module.exports = {
   },
 
   getProduct: async (productId) => {
-    const product = await User.findById(productId);
+    const product = await Product.findById(productId);
     return product;
   },
 
